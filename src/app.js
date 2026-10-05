@@ -20,4 +20,6 @@ app.get('/me', authenticate, (req, res) => {
   res.json({ userId: req.user.id });
 });
 
+app.use('/boards/:boardId/notes', require('./routes/boardNotes'));
+
 module.exports = app;

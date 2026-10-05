@@ -22,4 +22,18 @@ app.get('/me', authenticate, (req, res) => {
 
 app.use('/boards/:boardId/notes', require('./routes/boardNotes'));
 
+// Unknown routes -> 404
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route not found' });
+});
+
+// Error handler 
+app.use((err, req, res, next) => {
+  if (err.type === 'entity.parse.failed') {
+    return res.status(400).json({ error: 'Invalid JSON body' });
+  }
+  console.error(err);
+  res.status(500).json({ error: 'Internal server error' });
+});
+
 module.exports = app;

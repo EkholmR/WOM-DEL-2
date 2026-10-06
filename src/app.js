@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const pool = require('./db');
-const authenticate = require('../middleware/auth');
+
 
 const app = express();
 app.use(cors());
@@ -15,10 +15,7 @@ app.get('/health', async (req, res) => {
     res.status(500).json({ status: 'database unavailable' });
   }
 });
-// temporär test route för jwt
-app.get('/me', authenticate, (req, res) => {
-  res.json({ userId: req.user.id });
-});
+
 
 app.use('/boards/:boardId/notes', require('./routes/boardNotes'));
 

@@ -140,3 +140,5 @@ router.delete('/:noteId', async (req, res) => {
 });
 
 module.exports = router; 
+
+//cred till Claude för hjälp, hjälpte att utöka mina lösningar

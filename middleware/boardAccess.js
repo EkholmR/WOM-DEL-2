@@ -6,7 +6,7 @@ async function requireBoardAccess(req, res, next) {
   if (!Number.isInteger(boardId) || boardId < 1) {
     return res.status(400).json({ error: 'Invalid board id' });
   }
-
+//Claude saving the day med detta:
   try {
     const result = await pool.query(
       'SELECT id, name, allowed_user_ids FROM boards WHERE id = $1',

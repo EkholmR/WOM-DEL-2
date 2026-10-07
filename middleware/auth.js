@@ -22,3 +22,5 @@ function authenticate(req, res, next) {
 }
 
 module.exports = authenticate;
+
+//Claude använd för troubleshooting, skrev om raderna 3-8
